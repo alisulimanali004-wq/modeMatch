@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/templatemo-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <title>moda match</title>
+    <style>
+        .hero-section {
+            position: relative;
+            padding: 150px 10% 80px;
+            background: #f5f5f5;
+            overflow: hidden;
+            min-height: 80vh;
+        }
+
+            .hero-section::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 100%;
+                height: 100%;
+                background: white;
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 30% 100%);
+                z-index: 1;
+            }
+
+        .hero-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            z-index: 2;
+        }
+
+        .hero-image-box {
+            flex: 1;
+        }
+
+            .hero-image-box img {
+                width: 100%;
+                max-width: 500px;
+                border-radius: 10px;
+                box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            }
+
+        .hero-text-box {
+            flex: 1;
+        }
+
+            .hero-text-box h1 {
+                font-size: 3rem;
+                color: #333;
+                margin-bottom: 20px;
+            }
+
+            .hero-text-box p {
+                font-size: 1.2rem;
+                color: #666;
+                line-height: 1.6;
+            }
+
+        .selection-section {
+            padding: 80px 5%;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            position: relative;
+        }
+
+        .selection-container {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex-wrap: wrap;
+        }
+
+        .selection-item {
+            text-align: center;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            width: 400px;
+            transition: transform 0.3s ease;
+        }
+
+        .selection-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .selection-item h3 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .options-buttons {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .option-btn {
+            padding: 18px 24px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            background: #fafafa;
+            color: #555;
+            font-size: 1.15rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-btn:hover {
+            border-color: #333;
+            background: #f5f5f5;
+        }
+
+        .option-btn.selected {
+            background: #333;
+            color: white;
+            border-color: #333;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .selected-display {
+            margin-top: 20px;
+            padding: 14px 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            display: inline-block;
+            min-width: 150px;
+        }
+
+        .selected-display.has-value {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        }
+
+        .body-shape-banner {
+            background: linear-gradient(135deg, #333 0%, #555 100%);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .body-shape-banner p {
+            color: white;
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .body-shape-banner .shape-value {
+            background: #f1c40f;
+            color: #333;
+            padding: 8px 25px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .body-shape-banner .change-btn {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+
+        .body-shape-banner .change-btn:hover {
+            background: white;
+            color: #333;
+        }
+
+        /* AI Section */
+        .ai-assistant-section {
+            padding: 60px 5%;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            margin-top: 40px;
+        }
+
+        .ai-assistant-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .ai-assistant-container h2 {
+            color: white;
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .ai-assistant-container .ai-subtitle {
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .ai-input-wrapper {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .ai-text-input {
+            flex: 1;
+            min-width: 300px;
+            padding: 16px 24px;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .ai-text-input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+
+        .ai-text-input:focus {
+            outline: none;
+            border-color: #f1c40f;
+            background: rgba(255,255,255,0.15);
+        }
+
+        .ai-ask-btn {
+            padding: 16px 35px;
+            background: linear-gradient(135deg, #f1c40f 0%, #f39c12 100%);
+            color: #1a1a2e;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .ai-ask-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(241, 196, 15, 0.4);
+        }
+
+        .ai-response-box {
+            margin-top: 30px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 25px;
+            display: none;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .ai-response-box.show {
+            display: block;
+        }
+
+        .ai-response-box h4 {
+            color: #f1c40f;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .ai-response-box p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .options-section {
+            padding: 40px 10%;
+            background: white;
+        }
+
+        .options-title {
+            font-size: 7rem;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .options-grid {
+            display: flex;
+            gap: 40px;
+            justify-content: space-between;
+        }
+
+        .option-card {
+            flex: 1;
+            background: #fff;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+            .option-card img {
+                width: 300px;
+                height: 250px;
+                object-fit: cover;
+                border-radius: 10px;
+            }
+
+            .option-card p {
+                padding: 15px 0;
+                font-size: 2rem;
+                color: #555;
+            }
+
+        .options-grid {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+            margin-top: 50px;
+        }
+
+    </style>
+</head>
+<script>
+    function showResult(elementId, value) {
+        document.getElementById(elementId).innerText = value;
+
+        document.getElementById(elementId).style.color = "#f1c40f";
+        document.getElementById(elementId).style.fontWeight = "bold";
+    }
+</script>
+<body>
+    <div class="fixed-header">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <button type="button" class="navbar-toggle">
+                        <span class="icon-bar"></span>
+
+
+
+
+                    </button>
+                    <a class="navbar-brand" href="#">Moda Match</a>
+            </div>
+            <nav class="main-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#whyus">why us</a></li>
+                    <li><a href="index.html#aboutus">About us</a></li>
+                    <li><a href="index.html#contactus">contact us </a></li>
+                    <li id="authNavItem"><a href="login.html"><button class="btn_header">Log in</button></a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+
+
+    <section class="hero-section">
+        <div class="hero-container">
+            <div class="hero-image-box">
+                <img src="images/maan.jpeg" alt="Men Fashion">
+            </div>
+            <div class="hero-text-box">
+                <h1>Men closing</h1>
+                <p>
+                    Is the coordination problem related to the type of fabric or the colors?
+
+
+                    Whatever the type of fabric and whatever the season you want to coordinate, we have
+                    the extensive and sufficient experience to coordinate colors and sizes according to
+                    what suits you!
+                    Log in now and let's begin your fashion journey.
+                </p>
+                <button type="button" class="navbar-toggle">
+                    <span class="icon-bar"></span>
+                    <li><a href="man shape.html"><button class="btn_header">choose your shape</button></a></li>
+
+    </section>
+    </div>
+    </div>
+
+    <div class="body-shape-banner" id="shapeBar" style="display: none;">
+        <p>Your Body Shape:</p>
+        <span class="shape-value" id="shapeDisplay">-</span>
+        <button class="change-btn" onclick="window.location.href='man shape.html'">Change</button>
+    </div>
+
+    <section class="selection-section">
+        <div class="selection-container">
+            <div class="selection-item">
+                <h3>Choose Season</h3>
+                <div class="options-buttons">
+                    <button class="option-btn" onclick="selectOption('season', 'Winter', this)">Winter</button>
+                    <button class="option-btn" onclick="selectOption('season', 'Summer', this)">Summer</button>
+                    <button class="option-btn" onclick="selectOption('season', 'Autumn', this)">Autumn</button>
+                    <button class="option-btn" onclick="selectOption('season', 'Spring', this)">Spring</button>
+                </div>
+                <div class="selected-display" id="season-display">Select a season</div>
+                <span id="season-res" style="display:none;">None</span>
+            </div>
+
+            <div class="selection-item">
+                <h3>Choose Event</h3>
+                <div class="options-buttons">
+                    <button class="option-btn" onclick="selectOption('event', 'Sport', this)">Sport</button>
+                    <button class="option-btn" onclick="selectOption('event', 'Classic', this)">Classic</button>
+                    <button class="option-btn" onclick="selectOption('event', 'Date', this)">Date</button>
+                    <button class="option-btn" onclick="selectOption('event', 'Event', this)">Event</button>
+                </div>
+                <div class="selected-display" id="event-display">Select an event</div>
+                <span id="event-res" style="display:none;">None</span>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="options-section">
+        <h2 class="options-title">Options:</h2>
+        <div class="options-grid">
+            <div class="option-card">
+                <img src="images/1234.jpg" alt="Winter Style">
+                <p><strong>Season:</strong> Winter</p>
+            </div>
+            <div class="option-card">
+                <img src="images/WhatsApp Image 2025-11-29 at 17.35.04_1fe9bf8c.jpg" alt="Color Mix">
+                <p><strong>Event:</strong> Date</p>
+            </div>
+            <div class="option-card">
+                <img src="images/man.jpg" alt="Complete Style">
+                <p><strong>Style:</strong> Burgundy shirt with grey trousers</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Assistant Section -->
+    <section class="ai-assistant-section">
+        <div class="ai-assistant-container">
+            <h2>AI Style Assistant</h2>
+            <p class="ai-subtitle">Describe your style needs and get personalized recommendations</p>
+
+            <div class="ai-input-wrapper">
+                <input type="text" id="aiTextInput" class="ai-text-input"
+                       placeholder="e.g., I need a formal outfit for a business meeting...">
+                <button id="aiAskBtn" class="ai-ask-btn">
+                    <i class="fas fa-robot"></i> Ask AI
+                </button>
+            </div>
+
+            <div class="ai-response-box" id="aiResponseBox">
+                <h4><i class="fas fa-lightbulb"></i> AI Recommendation</h4>
+                <p id="aiResponseText"></p>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.singlePageNav.min.js"></script>
+    <script src="js/api.js"></script>
+
+    <script>
+        // Update navigation based on login status
+        function updateNavigation() {
+            const user = ModaMatchAPI.getUser();
+            const authNavItem = document.getElementById('authNavItem');
+
+            if (user) {
+                authNavItem.innerHTML = `
+                    <span style="color:#fff; margin-right:10px;">Hi, ${user.firstName}</span>
+                    <button class="btn_header" onclick="ModaMatchAPI.logout()" style="background:#333;">Log out</button>
+                `;
+            } else {
+                authNavItem.innerHTML = `<a href="login.html"><button class="btn_header">Log in</button></a>`;
+            }
+        }
+
+        // Initialize on page load
+        updateNavigation();
+
+        // Display body shape if saved
+        const savedShape = localStorage.getItem('bodyShape');
+        if (savedShape) {
+            document.getElementById('shapeBar').style.display = 'flex';
+            document.getElementById('shapeDisplay').textContent = savedShape;
+        }
+
+        async function getOutfitSuggestions() {
+            const season = document.getElementById('season-res').textContent;
+            const event = document.getElementById('event-res').textContent;
+
+            if (season === 'None' || event === 'None') {
+                alert('Please choose season and event first');
+                return;
+            }
+
+            // Get body shape from localStorage (saved from man shape.html)
+            let bodyShape = localStorage.getItem('bodyShape');
+            if (!bodyShape) {
+                bodyShape = prompt('Enter your body shape (A, B, C, D, E):', 'A');
+                if (!bodyShape) return;
+                bodyShape = bodyShape.toUpperCase();
+            }
+
+            try {
+                const filters = {
+                    season: season.toLowerCase(),
+                    event: event.toLowerCase(),
+                    gender: 'male',
+                    bodyShape: bodyShape
+                };
+
+                const result = await ModaMatchAPI.getOutfitSuggestions(filters);
+
+                if (result.success && result.outfits.length > 0) {
+                    displayOutfits(result.outfits);
+                }
+            } catch (error) {
+                alert('Error getting suggestions');
+            }
+        }
+
+        function displayOutfits(outfits) {
+            const grid = document.querySelector('.options-grid');
+            grid.innerHTML = '';
+
+            outfits.forEach(o => {
+                grid.innerHTML += `
+                            <div class="option-card">
+                                <img src="images/man.jpg">
+                                <p><strong>Top:</strong> ${o.top}</p>
+                                <p><strong>Bottom:</strong> ${o.bottom}</p>
+                                <p><strong>Shoes:</strong> ${o.shoes}</p>
+                                <p><strong>Season:</strong> ${o.season}</p>
+                                <p><strong>Event:</strong> ${o.event}</p>
+                            </div>
+                        `;
+            });
+        }
+
+        function selectOption(type, value, btn) {
+            // Remove selected class from siblings
+            const parent = btn.parentElement;
+            parent.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected'));
+
+            // Add selected to clicked button
+            btn.classList.add('selected');
+
+            // Update hidden span for compatibility
+            document.getElementById(type + '-res').innerText = value;
+
+            // Update display
+            const display = document.getElementById(type + '-display');
+            display.innerText = value;
+            display.classList.add('has-value');
+
+            // Show suggest button if both are selected
+            const season = document.getElementById('season-res').innerText;
+            const event = document.getElementById('event-res').innerText;
+
+            if (season !== 'None' && event !== 'None' && !document.getElementById('suggestBtn')) {
+                const btn = document.createElement('button');
+                btn.id = 'suggestBtn';
+                btn.innerText = 'Get Outfit Suggestions';
+                btn.className = 'btn dark-blue-btn';
+                btn.style.cssText = 'margin: 30px auto; display: block; padding: 15px 40px; background: #333; color: white; border: none; border-radius: 30px; font-size: 1.1rem; cursor: pointer; transition: all 0.3s;';
+                btn.onmouseover = () => btn.style.background = '#555';
+                btn.onmouseout = () => btn.style.background = '#333';
+                btn.onclick = getOutfitSuggestions;
+
+                document.querySelector('.options-section').appendChild(btn);
+            }
+        }
+        // AI Assistant functionality
+        document.getElementById('aiAskBtn').addEventListener('click', async function() {
+            const text = document.getElementById('aiTextInput').value;
+            const responseBox = document.getElementById('aiResponseBox');
+            const responseText = document.getElementById('aiResponseText');
+            const btn = this;
+
+            if (!text.trim()) {
+                responseBox.classList.add('show');
+                responseText.innerText = 'Please describe what kind of outfit you are looking for.';
+                return;
+            }
+
+            const shape = localStorage.getItem('bodyShape') || 'Not specified';
+            const extra = localStorage.getItem('extraInfo') || '';
+
+            const fullRequest = `
+                Gender: Male
+                Body Shape: ${shape}
+                Additional Info: ${extra}
+                User Request: ${text}
+            `;
+
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Thinking...';
+            btn.disabled = true;
+
+            try {
+                const res = await fetch(API_BASE + '/ai/recommend-text', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text: fullRequest })
+                });
+
+                const data = await res.json();
+                responseBox.classList.add('show');
+                responseText.innerText = data.recommendation;
+            } catch (err) {
+                responseBox.classList.add('show');
+                responseText.innerText = 'Sorry, there was an error. Please try again.';
+                console.error(err);
+            }
+
+            btn.innerHTML = '<i class="fas fa-robot"></i> Ask AI';
+            btn.disabled = false;
+        });
+    </script>
+
+</body>
+</html>

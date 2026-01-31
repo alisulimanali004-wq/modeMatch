@@ -1,0 +1,27 @@
+{
+  "name": "moda-match-backend",
+  "version": "1.0.0",
+  "description": "Backend for ModaMatch fashion AI",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "setup": "npm install"
+  },
+  "keywords": [
+    "fashion",
+    "ai",
+    "nodejs"
+  ],
+  "author": "You",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.2.3",
+    "express": "^4.22.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.1.5"
+  },
+  "type": "commonjs"
+}

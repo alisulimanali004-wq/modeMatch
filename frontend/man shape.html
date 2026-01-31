@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ModaMatch</title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/templatemo-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            background: #eef1f6;
+        }
+
+        .page {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 250px 100px 70px;
+        }
+
+
+
+        .choose-btn {
+            padding: 14px 40px;
+            border-radius: 25px;
+            background: black;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 20px auto;
+            display: block;
+        }
+
+            .choose-btn:hover {
+                background: black;
+            }
+
+
+
+
+
+
+        .title {
+            text-align: center;
+            font-size: 30px;
+            font-weight: 700;
+            color: black;
+            margin: 15px 0;
+        }
+
+        .images {
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+        }
+
+        .item {
+            text-align: center;
+        }
+
+            .item img {
+                width: 100%;
+                height: auto;
+                display: block;
+                margin: 30% auto 10px;
+                border-radius: 15%;
+                margin-left: 0%;
+            }
+
+            .item span {
+                font-size: 16px;
+                font-weight: 600;
+                color: #444;
+                margin-top: 50%;
+                margin-top: 20%;
+            }
+
+        .label {
+            margin-top: 50%;
+            margin-left: 42%;
+            color: black;
+        }
+
+        .text {
+            margin-top: 20%;
+            margin-left: 50%;
+        }
+
+        .letters-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 15px;
+        }
+
+            .letters-container span {
+                font-size: 24px;
+                font-weight: 600;
+                color: #888;
+                cursor: pointer;
+                padding: 15px 25px;
+                border: 2px solid #ddd;
+                border-radius: 10px;
+                transition: all 0.3s;
+            }
+
+            .letters-container span:hover {
+                background: #f0f0f0;
+                border-color: #999;
+            }
+
+            .letters-container span.selected {
+                background: #e26767;
+                color: white;
+                border-color: #e26767;
+            }
+
+        .event-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .label {
+            margin-bottom: 10px;
+            color: black;
+        }
+
+        .text {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="page">
+        <h2 class="title">Choose your Body Shape</h2>
+
+        <div class="item">
+            <img src="images/man shape.jpg" alt="Body Shape">
+
+            <div class="letters-container">
+                <span class="shape" data-shape="A">A</span>
+                <span class="shape" data-shape="B">B</span>
+                <span class="shape" data-shape="C">C</span>
+                <span class="shape" data-shape="D">D</span>
+                <span class="shape" data-shape="E">E</span>
+            </div>
+        </div>
+
+        <div class="event-section">
+            <input type="text" id="extraInfo" class="text"
+                   placeholder="Optional: describe your style or event">
+
+            <button class="choose-btn" id="chooseBtn">Choose</button>
+        </div>
+    </div>
+
+    <script>
+let selectedShape = null;
+
+document.querySelectorAll('.shape').forEach(el => {
+    el.addEventListener('click', () => {
+        // Remove selected from all
+        document.querySelectorAll('.shape').forEach(s => s.classList.remove('selected'));
+        // Add selected to clicked
+        el.classList.add('selected');
+        selectedShape = el.dataset.shape;
+    });
+});
+
+document.getElementById('chooseBtn').addEventListener('click', () => {
+    if (!selectedShape) {
+        alert("Please click on a letter (A, B, C, D, E) to select your body shape");
+        return;
+    }
+
+    const extra = document.getElementById('extraInfo').value;
+
+    localStorage.setItem('bodyShape', selectedShape);
+    localStorage.setItem('extraInfo', extra);
+
+    // Redirect to man.html
+    window.location.href = "man.html";
+});
+    </script>
+
+</body>
+
+</html>

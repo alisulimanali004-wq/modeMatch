@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/templatemo-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <title>moda match</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+
+
+
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 50px;
+            background: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #8b6b5d;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+            .nav-links a {
+                text-decoration: none;
+                color: #333;
+                font-size: 14px;
+                font-weight: 500;
+            }
+
+        .login-btn {
+            background-color: #c4a494;
+            color: white !important;
+            padding: 8px 20px;
+            border-radius: 5px;
+        }
+
+
+        .hero-section {
+            width: 100%;
+            height: 450px;
+            background-image: url('https://images.unsplash.com/photo-1483985988355-763728e1935b?q=80&w=2070'); /* صورة تعبيرية للموضة */
+            background-size: cover;
+            background-position: center;
+        }
+
+
+        .shop-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 80px 10%;
+            min-height: 400px;
+            z-index: 1;
+        }
+
+
+            .shop-container::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: #f4f4f4;
+                z-index: -1;
+                clip-path: polygon(0 0, 35% 0, 55% 100%, 0% 100%);
+            }
+
+
+            .shop-container.reversed {
+                flex-direction: row-reverse;
+            }
+
+                .shop-container.reversed::before {
+                    clip-path: polygon(100% 0, 65% 0, 45% 100%, 100% 100%);
+                }
+
+
+
+        .shop-text h2 {
+            font-size: 32px;
+            margin-bottom: 8px;
+            color: #000;
+        }
+
+        .shop-text p {
+            color: #888;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .shop-button {
+            display: inline-block;
+            background-color: #000;
+            color: #fff;
+            padding: 12px 35px;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+            .shop-button:hover {
+                opacity: 0.8;
+                transform: translateY(-2px);
+            }
+
+
+        .shop-img img {
+            max-width: 350px;
+            height: auto;
+            display: block;
+        }
+
+
+        @media (max-width: 768px) {
+            .shop-container, .shop-container.reversed {
+                flex-direction: column;
+                text-align: center;
+                padding: 40px 20px;
+            }
+
+                .shop-container::before {
+                    clip-path: none;
+                }
+
+            .shop-img img {
+                max-width: 250px;
+                margin-top: 30px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+
+        /* Browse Outfits Section */
+        .outfits-section {
+            padding: 80px 5%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .outfits-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 50px;
+        }
+
+        .outfits-header h2 {
+            color: white;
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .outfits-header .subtitle {
+            color: rgba(255,255,255,0.85);
+            font-size: 1.15rem;
+            line-height: 1.6;
+        }
+
+        .outfits-filters {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .filter-btn {
+            padding: 12px 28px;
+            border: none;
+            background: rgba(255,255,255,0.15);
+            color: white;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .filter-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+
+        .filter-btn.active {
+            background: white;
+            color: #667eea;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .filter-btn i {
+            font-size: 0.9rem;
+        }
+
+        .outfits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .outfit-card {
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transition: all 0.4s ease;
+        }
+
+        .outfit-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+        }
+
+        .outfit-card-img {
+            height: 180px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4.5rem;
+            position: relative;
+        }
+
+        .outfit-card-img::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 40px;
+            background: linear-gradient(to top, rgba(255,255,255,0.3), transparent);
+        }
+
+        .outfit-card-body {
+            padding: 25px;
+        }
+
+        .outfit-card-body h4 {
+            color: #2d3436;
+            margin-bottom: 15px;
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        .outfit-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 18px;
+        }
+
+        .outfit-tag {
+            padding: 6px 14px;
+            background: #f8f9fa;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            color: #666;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .outfit-tag.season {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            color: #1565c0;
+        }
+
+        .outfit-tag.event {
+            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
+            color: #ad1457;
+        }
+
+        .outfit-tag.gender {
+            background: linear-gradient(135deg, #f3e5f5 0%, #e1bee7 100%);
+            color: #6a1b9a;
+        }
+
+        .outfit-details {
+            font-size: 0.92rem;
+            color: #636e72;
+            line-height: 1.8;
+            border-top: 1px solid #f0f0f0;
+            padding-top: 15px;
+        }
+
+        .outfit-details span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .outfit-details span strong {
+            color: #2d3436;
+            min-width: 70px;
+        }
+
+        .loading-spinner {
+            text-align: center;
+            padding: 60px 40px;
+            color: white;
+            font-size: 1.3rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+
+        .loading-spinner i {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        .no-outfits {
+            text-align: center;
+            padding: 60px 40px;
+            color: white;
+            font-size: 1.2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .no-outfits i {
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 15px;
+            opacity: 0.7;
+        }
+
+        /* AI Assistant Section */
+        .ai-section {
+            padding: 80px 5%;
+            background: #f8f9fa;
+        }
+
+        .ai-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .ai-container h2 {
+            font-size: 2.5rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .ai-container .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+        }
+
+        .ai-input-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .ai-input {
+            flex: 1;
+            min-width: 300px;
+            max-width: 500px;
+            padding: 18px 25px;
+            border: 2px solid #e0e0e0;
+            border-radius: 30px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .ai-input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .ai-submit-btn {
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .ai-submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .ai-result-box {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            min-height: 100px;
+            display: none;
+        }
+
+        .ai-result-box.show {
+            display: block;
+        }
+
+        .ai-result-box h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .ai-result-box p {
+            color: #555;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+
+
+
+    <nav class="navbar">
+        <div class="logo">MODA Match</div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#whyus">why us</a></li>
+            <li><a href="index.html#aboutus">About us</a></li>
+            <li><a href="index.html#contactus">contact us </a></li>
+            <li id="authNavItem"></li>
+        </ul>
+    </nav>
+
+    <div class="hero-section"></div>
+
+    <div class="shop-container">
+        <div class="shop-text">
+            <h2>Shop from Shein</h2>
+            <p>Find your preferred option</p>
+            <a href="https://www.shein.com" target="_blank" class="shop-button">Shop</a>
+        </div>
+        <div class="shop-img">
+            <img src="images/shein.jpg" alt="Shein">
+        </div>
+    </div>
+
+    <div class="shop-container reversed">
+        <div class="shop-text">
+            <h2>Shop From AliExpress</h2>
+            <p>Find your preferred option</p>
+            <a href="https://www.aliexpress.com" target="_blank" class="shop-button">Shop</a>
+        </div>
+        <div class="shop-img">
+            <img src="images/order.jpg" alt="AliExpress">
+        </div>
+    </div>
+
+    <div class="shop-container">
+        <div class="shop-text">
+            <h2>Shop from TEMU</h2>
+            <p>Find your preferred option</p>
+            <a href="https://www.temu.com" target="_blank" class="shop-button">Shop</a>
+        </div>
+        <div class="shop-img">
+            <img src="images/temu.jpg" alt="TEMU">
+        </div>
+    </div>
+
+    <!-- Browse All Outfits Section -->
+    <section class="outfits-section">
+        <div class="outfits-header">
+            <h2>Browse All Outfits</h2>
+            <p class="subtitle">Discover our curated collection of stylish outfit combinations for every occasion</p>
+        </div>
+
+        <div class="outfits-filters">
+            <button class="filter-btn active" onclick="filterOutfits('all')">
+                <i class="fas fa-th-large"></i> All
+            </button>
+            <button class="filter-btn" onclick="filterOutfits('male')">
+                <i class="fas fa-male"></i> Men
+            </button>
+            <button class="filter-btn" onclick="filterOutfits('female')">
+                <i class="fas fa-female"></i> Women
+            </button>
+            <button class="filter-btn" onclick="filterOutfits('winter')">
+                <i class="fas fa-snowflake"></i> Winter
+            </button>
+            <button class="filter-btn" onclick="filterOutfits('summer')">
+                <i class="fas fa-sun"></i> Summer
+            </button>
+        </div>
+
+        <div class="outfits-grid" id="outfitsGrid">
+            <div class="loading-spinner">
+                <i class="fas fa-spinner fa-spin"></i> Loading outfits...
+            </div>
+        </div>
+    </section>
+
+    <!-- AI Style Assistant Section -->
+    <section class="ai-section">
+        <div class="ai-container">
+            <h2>AI Style Assistant</h2>
+            <p class="subtitle">Describe what you're looking for and let AI help you find the perfect outfit</p>
+
+            <div class="ai-input-group">
+                <input type="text" id="aiInput" class="ai-input"
+                       placeholder="e.g., I need a casual outfit for a summer beach party...">
+                <button id="aiBtn" class="ai-submit-btn">
+                    <i class="fas fa-magic"></i> Ask AI
+                </button>
+            </div>
+
+            <div class="ai-result-box" id="aiResultBox">
+                <h4><i class="fas fa-lightbulb"></i> AI Recommendation</h4>
+                <p id="aiResult"></p>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="js/api.js"></script>
+    <script>
+        let allOutfits = [];
+
+        // Update navigation based on login status
+        function updateNavigation() {
+            const user = ModaMatchAPI.getUser();
+            const authNavItem = document.getElementById('authNavItem');
+
+            if (user) {
+                authNavItem.innerHTML = `
+                    <span style="color:#333; margin-right:10px;">Hi, ${user.firstName}</span>
+                    <a href="#" onclick="ModaMatchAPI.logout(); return false;" class="login-btn" style="background:#333;">Log out</a>
+                `;
+            } else {
+                authNavItem.innerHTML = `<a href="login.html" class="login-btn">Log in</a>`;
+            }
+        }
+
+        // Load all outfits from API
+        async function loadOutfits() {
+            const grid = document.getElementById('outfitsGrid');
+
+            try {
+                const result = await ModaMatchAPI.getAllOutfits();
+
+                if (result.success && result.outfits && result.outfits.length > 0) {
+                    allOutfits = result.outfits;
+                    displayOutfits(allOutfits);
+                } else {
+                    grid.innerHTML = '<div class="no-outfits"><i class="fas fa-tshirt"></i>No outfits available yet. Check back soon!</div>';
+                }
+            } catch (error) {
+                console.error('Error loading outfits:', error);
+                grid.innerHTML = '<div class="no-outfits"><i class="fas fa-exclamation-circle"></i>Unable to load outfits. Please try again later.</div>';
+            }
+        }
+
+        // Display outfits in grid
+        function displayOutfits(outfits) {
+            const grid = document.getElementById('outfitsGrid');
+
+            if (outfits.length === 0) {
+                grid.innerHTML = '<div class="no-outfits"><i class="fas fa-search"></i>No outfits match your filter.</div>';
+                return;
+            }
+
+            const icons = {
+                male: '👔',
+                female: '👗',
+                winter: '❄️',
+                summer: '☀️',
+                autumn: '🍂',
+                spring: '🌸'
+            };
+
+            const seasonIcons = {
+                winter: '<i class="fas fa-snowflake"></i>',
+                summer: '<i class="fas fa-sun"></i>',
+                autumn: '<i class="fas fa-leaf"></i>',
+                spring: '<i class="fas fa-seedling"></i>'
+            };
+
+            const genderIcons = {
+                male: '<i class="fas fa-male"></i>',
+                female: '<i class="fas fa-female"></i>'
+            };
+
+            grid.innerHTML = outfits.map(outfit => `
+                <div class="outfit-card">
+                    <div class="outfit-card-img">
+                        ${icons[outfit.gender] || icons[outfit.season] || '👕'}
+                    </div>
+                    <div class="outfit-card-body">
+                        <h4>${outfit.season.charAt(0).toUpperCase() + outfit.season.slice(1)} ${outfit.event.charAt(0).toUpperCase() + outfit.event.slice(1)} Look</h4>
+                        <div class="outfit-tags">
+                            <span class="outfit-tag season">${seasonIcons[outfit.season] || ''} ${outfit.season}</span>
+                            <span class="outfit-tag event"><i class="fas fa-calendar-alt"></i> ${outfit.event}</span>
+                            <span class="outfit-tag gender">${genderIcons[outfit.gender] || ''} ${outfit.gender}</span>
+                        </div>
+                        <div class="outfit-details">
+                            <span><strong>Top:</strong> ${outfit.top}</span>
+                            <span><strong>Bottom:</strong> ${outfit.bottom}</span>
+                            <span><strong>Shoes:</strong> ${outfit.shoes}</span>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Filter outfits
+        function filterOutfits(filter) {
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            if (filter === 'all') {
+                displayOutfits(allOutfits);
+            } else {
+                const filtered = allOutfits.filter(outfit =>
+                    outfit.gender === filter || outfit.season === filter
+                );
+                displayOutfits(filtered);
+            }
+        }
+
+        // AI Assistant
+        document.getElementById('aiBtn').addEventListener('click', async () => {
+            const text = document.getElementById('aiInput').value;
+            const resultBox = document.getElementById('aiResultBox');
+            const resultText = document.getElementById('aiResult');
+            const btn = document.getElementById('aiBtn');
+
+            if (!text) {
+                resultBox.classList.add('show');
+                resultText.innerText = "Please describe what kind of outfit you're looking for.";
+                return;
+            }
+
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Thinking...';
+            btn.disabled = true;
+
+            try {
+                const res = await fetch(API_BASE + '/ai/recommend-text', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ text })
+                });
+
+                const data = await res.json();
+                resultBox.classList.add('show');
+                resultText.innerText = data.recommendation;
+
+            } catch (err) {
+                resultBox.classList.add('show');
+                resultText.innerText = "Sorry, there was an error. Please try again.";
+                console.error(err);
+            }
+
+            btn.innerHTML = '<i class="fas fa-magic"></i> Ask AI';
+            btn.disabled = false;
+        });
+
+        // Initialize on page load
+        updateNavigation();
+        loadOutfits();
+    </script>
+
+
+</body>
+</html>

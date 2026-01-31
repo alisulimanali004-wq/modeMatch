@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/templatemo-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <title>ModaMatch</title>
+    <style>
+        .fixed-header {
+            z-index: 9999 !important;
+        }
+
+        .main-menu {
+            z-index: 10000 !important;
+        }
+
+        .btn_header {
+            cursor: pointer;
+            position: relative;
+            z-index: 10001;
+        }
+    </style>
+    <style>
+
+        .contact-img {
+            margin-top: 190px;
+            transition: margin-top 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .contact-img {
+                margin-top: 20px;
+            }
+        }
+    </style>
+    <style>
+        .user-menu {
+            display: none;
+            position: absolute;
+            top: 60px;
+            right: 20px;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            padding: 15px;
+            z-index: 10002;
+        }
+
+        .user-info {
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .logout-btn {
+            background: #e26767;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="fixed-header">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+
+
+
+
+                </button>
+                <a class="navbar-brand" href="#">Moda Match</a>
+            </div>
+            <nav class="main-menu">
+                <div class="user-menu" id="userMenu">
+                    <div class="user-info" id="userInfo"></div>
+                    <button class="logout-btn" onclick="ModaMatchAPI.logout()">تسجيل الخروج</button>
+                </div>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="index.html#whyus">why us</a></li>
+                    <li><a href="index.html#aboutus">About us</a></li>
+                    <li><a href="index.html#contactus">contact us </a></li>
+                    <li id="authNavItem">
+                        <a href="login.html" id="authBtn" class="btn_header" style="display:inline-block; padding:10px 25px; background:#e26767; color:white; border-radius:5px; text-decoration:none; cursor:pointer;">Log in</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <section class="col-md-12 content" id="home">
+            <div class="col-lg-6 col-md-6 content-item">
+                <img src="images/7f46ba14-7122-46bb-ab8c-709c10797c73-1000x1000-QB9HKgXcFJRKEgaupzScVHIE2hJUpJzX5HwEvSW6.webp" alt="Image" class="tm-image">
+            </div>
+            <div class="col-lg-6 col-md-6 content-item content-item-1 background">
+                <h2 class="main-title text-center dark-blue-text"> Welcome to Moda Match </h2>
+                <p>
+                    Welcome to our platform where outfit coordination has become
+                    easier and more stylish
+                </p>
+
+                <center>
+                    <div id="welcomeActions">
+                        <a href="login.html" id="welcomeLoginBtn" class="btn btn-big dark-blue-btn" style="display:inline-block; text-decoration:none;">Log in</a>
+                    </div>
+                </center>
+            </div>
+        </section>
+
+
+        <section class="col-md-12 content padding" id="whyus">
+            <div class="col-lg-6 col-md-6 col-md-push-6 content-item">
+                <img src="images/WhatsApp Image 2025-11-29 at 17.35.05_36bd0e3c.jpg" alt="Image" class="tm-image">
+            </div>
+            <div class="col-lg-6 col-md-6 col-md-pull-6 content-item background flexbox">
+                <h2 class="section-title">Why us?</h2>
+                <p class="section-text">Because your style is important, and as styling experts, we would be happy to help you wear all your clothes without having to wear them every time in the same way until you get bored of them.</p>
+
+            </div>
+
+        </section>
+
+
+
+        <section class="col-md-12 content" id="clients">
+            <div class="col-lg-6 col-md-6 content-item">
+
+                <div class="tm-image">
+
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel" style="width:100%;margin:auto;">
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                            <li data-target="#myCarousel" data-slide-to="3"></li>
+                        </ol>
+
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img src="images/تنزيل (3).jfif" alt="" style="width:100%;">
+                            </div>
+
+                            <div class="item">
+                                <img src="images/woman.jfif" alt="" style="width:100%;">
+                            </div>
+
+                            <div class="item">
+                                <img src="images/تنزيل (5).jfif" alt="" style="width:100%;">
+                            </div>
+
+                            <div class="item">
+                                <img src="images/تنزيل (2).jfif" alt="" style="width:100%;">
+                            </div>
+
+                        </div>
+
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6 content-item background flexbox">
+                <h2 class="section-title">Our Room</h2>
+
+                <p>for women and man clothing </p>
+                <p>
+                    tell us about your taste in clothes and chooes from our suggestions what you like.
+                    <br>
+                    also  Stores we recommend you buy outfits from.
+                </p>
+                <div>
+                    <a href="man.html"><button type="button" class="btn dark-blue-bordered-btn normal-btn">Man</button></a>
+                    <a href="women.html"><button type="button" class="btn dark-blue-bordered-btn normal-btn">Woman</button></a>
+                    <a href="shop.html"><button type="button" class="btn dark-blue-bordered-btn normal-btn">Stores</button></a>
+                </div>
+            </div>
+        </section>
+
+
+
+        <section class="col-md-12 content padding" id="aboutus">
+            <div class="col-lg-6 col-md-6 col-md-push-6 content-item">
+                <img src="images/logo.PNG" alt="Image" class="tm-image">
+            </div>
+            <div class="col-lg-6 col-md-6 col-md-pull-6 content-item background flexbox">
+                <h2 class="section-title">About us </h2>
+                <p class="section-text2">Fashion and clothing coordination experts</p>
+                <p class="section-text">
+                    We are a team specializing in clothing coordination. We created a website and will soon develop an application
+                    to help women and men interested in fashion and beauty highlight the beauty of their skin tone and the best fit
+                    for their body shape.
+                </p>
+
+                <p class="section-text">
+                    With the help of artificial intelligence, we are closer than ever to anything else. We have integrated artificial
+                    intelligence with fashion and beauty with our humble expertise, and we are waiting for you to try it!
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <section class="col-md-12 content" id="contactus">
+
+            <div class="col-lg-6 col-md-6 col-md-push-6 content-item">
+                <img src="images/Account Login Vector PNG Images, Online Registration Or Sign Up Login For Account On Smartphone App, Username, Cartoon, Signup PNG Image For Free Download.jfif" alt="Image" class="tm-image contact-img">
+            </div>
+            <div class="col-lg-6 col-md-6 col-md-pull-6 content-item background flexbox">
+                <h2 class="section-title">Contact Us</h2>
+
+                <form id="contactForm" name="contact-form" class="contact-form">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+
+                        <div class="form-group">
+                            <input name="firstName" type="text" class="form-control" id="contactFirstName" placeholder="First name" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pad-l-3">
+                        <div class="form-group contact-field">
+                            <input name="lastName" type="text" class="form-control" id="contactLastName" placeholder="Last name" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group contact-field">
+                            <input name="email" type="email" class="form-control" id="contactEmail" placeholder="Email address" required>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group contact-field">
+                            <textarea name="message" rows="6" class="form-control" id="message" placeholder="Enter your question or message..." required></textarea>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <div class="form-group margin-b-0">
+                            <button type="submit" id="form-submit" class="btn no-bg btn-contact">Submit</button>
+                        </div>
+                    </div>
+                </form>
+                <div id="msgSubmit" class="h3 text-center hidden">Message Submitted!</div>
+
+            </div>
+
+        </section>
+
+    </div>
+
+    <footer class="footer-2">
+        <div class="footer-inner">
+            <div class="footer-col">
+                <h4>WHO WE ARE</h4>
+                <p>ModaMatch is a cutting-edge platform that leverages artificial intelligence to offer personalized fashion coordination for men and women. It guides users in selecting the perfect outfits and recommends the best places to shop for them.".</p>
+            </div>
+
+            <div class="footer-section">
+                <ul>
+                    <li>home</li>
+                    <li>why us</li>
+                    <li>contact us</li>
+                    <li>aboutus</li>
+
+                </ul>
+            </div>
+
+
+
+
+            <div class="footer-col">
+                <h4>content US</h4>
+                <p style="color:#cbd6d9">Email:moda match@gmail.com<br>Phone:0953310990</p>
+
+
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f" style="color:lightcoral;"></i></a>
+                    <a href="#"><i class="fab fa-instagram" style="color:lightcoral;"></i></a>
+                    <a href="#" aria-label="twitter"><i class="fab fa-twitter" style="color: lightcoral;"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.singlePageNav.min.js"></script>
+    <script src="js/api.js"></script>
+
+    <script>
+        function checkScrollPosition() {
+            if ($(window).scrollTop() > 50) {
+                $(".fixed-header").addClass("scroll");
+            } else {
+                $(".fixed-header").removeClass("scroll");
+            }
+        }
+
+        // Update navigation based on login status
+        function updateNavigation() {
+            const user = ModaMatchAPI.getUser();
+            const authBtn = document.getElementById('authBtn');
+            const authNavItem = document.getElementById('authNavItem');
+            const welcomeActions = document.getElementById('welcomeActions');
+            const userMenu = document.getElementById('userMenu');
+            const userInfo = document.getElementById('userInfo');
+
+            if (user) {
+                // User is logged in - update header button
+                if (authBtn) {
+                    authBtn.textContent = user.firstName;
+                    authBtn.href = '#';
+                    authBtn.onclick = function(e) {
+                        e.preventDefault();
+                        if (userMenu) {
+                            userMenu.style.display = userMenu.style.display === 'block' ? 'none' : 'block';
+                        }
+                    };
+                }
+
+                // Update user info in dropdown
+                if (userInfo) {
+                    userInfo.textContent = `${user.firstName} ${user.lastName}`;
+                }
+
+                // Update welcome section - show different buttons
+                if (welcomeActions) {
+                    welcomeActions.innerHTML = `
+                        <a href="shop.html" class="btn btn-big dark-blue-btn" style="display:inline-block; text-decoration:none; margin-right:10px;">Explore Outfits</a>
+                        <a href="#" onclick="ModaMatchAPI.logout(); return false;" class="btn btn-big" style="display:inline-block; text-decoration:none; background:#333; color:white; padding:15px 30px; border-radius:5px;">Log out</a>
+                    `;
+                }
+            } else {
+                // User is not logged in - show login button
+                if (authBtn) {
+                    authBtn.textContent = 'Log in';
+                    authBtn.href = 'login.html';
+                    authBtn.onclick = function() {
+                        window.location.href = 'login.html';
+                    };
+                }
+
+                if (welcomeActions) {
+                    welcomeActions.innerHTML = `
+                        <a href="login.html" class="btn btn-big dark-blue-btn" style="display:inline-block; text-decoration:none;">Log in</a>
+                    `;
+                }
+
+                if (userMenu) {
+                    userMenu.style.display = 'none';
+                }
+            }
+        }
+
+        $(document).ready(function () {
+            $('.fixed-header').singlePageNav({
+                offset: 59,
+                filter: ':not(.external)',
+                updateHash: true
+            });
+
+            checkScrollPosition();
+
+            $('.navbar-toggle').click(function () {
+                $('.main-menu').toggleClass('show');
+            });
+
+            $('.main-menu a').click(function () {
+                $('.main-menu').removeClass('show');
+            });
+
+            // Initialize auth state
+            updateNavigation();
+
+            // Close user menu when clicking outside
+            document.addEventListener('click', function (e) {
+                const userMenu = document.getElementById('userMenu');
+                const authBtn = document.getElementById('authBtn');
+
+                if (userMenu && authBtn &&
+                    !userMenu.contains(e.target) &&
+                    !authBtn.contains(e.target)) {
+                    userMenu.style.display = 'none';
+                }
+            });
+        });
+
+        $(window).on("scroll", function () {
+            checkScrollPosition();
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm')?.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const btn = document.getElementById('form-submit');
+            const originalText = btn.textContent;
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+
+            const formData = {
+                firstName: document.getElementById('contactFirstName').value,
+                lastName: document.getElementById('contactLastName').value,
+                email: document.getElementById('contactEmail').value,
+                message: document.getElementById('message').value
+            };
+
+            try {
+                const result = await ModaMatchAPI.sendContactMessage(formData);
+
+                if (result.success) {
+                    btn.textContent = 'Sent!';
+                    btn.style.background = '#28a745';
+                    document.getElementById('msgSubmit').classList.remove('hidden');
+                    document.getElementById('msgSubmit').textContent = 'Message sent successfully!';
+                    document.getElementById('msgSubmit').style.color = '#28a745';
+                    document.getElementById('contactForm').reset();
+
+                    setTimeout(() => {
+                        btn.textContent = originalText;
+                        btn.disabled = false;
+                        btn.style.background = '';
+                        document.getElementById('msgSubmit').classList.add('hidden');
+                    }, 3000);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                btn.textContent = originalText;
+                btn.disabled = false;
+                document.getElementById('msgSubmit').classList.remove('hidden');
+                document.getElementById('msgSubmit').textContent = 'Failed to send message';
+                document.getElementById('msgSubmit').style.color = 'red';
+            }
+        });
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>
